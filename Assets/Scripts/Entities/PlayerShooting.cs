@@ -65,10 +65,15 @@ public class PlayerShooting : MonoBehaviour
 
 		if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))
 		{
-			ClientEntity enemyEntity = shootHit.collider.GetComponent <ClientEntity> ();
-			if (enemyEntity != null) {
-                GetComponent<ClientEntity>().CallServer ("ShootHit", enemyEntity.ID);
-			} else {
+            Monster enemyEntity = shootHit.collider.GetComponent <Monster> ();
+            Player playerEntity = shootHit.collider.GetComponent<Player>();
+
+            if (enemyEntity != null) {
+                GetComponent<ClientEntity>().CallServer("ShootHit", enemyEntity.ID);
+            } else if (playerEntity != null)
+            {
+                GetComponent<ClientEntity>().CallServer("ShootHitPlayer", playerEntity.ID);
+            } else {
                 GetComponent<ClientEntity>().CallServer ("ShootMiss");
 			}
 		}

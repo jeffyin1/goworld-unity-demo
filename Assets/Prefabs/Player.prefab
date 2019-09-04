@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23382417057227036}
   - component: {fileID: 135459442927828804}
   - component: {fileID: 114398241467060424}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4916789060652412}
   - component: {fileID: 137533286591734770}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 224723046324639334}
   - component: {fileID: 222291686730405834}
   - component: {fileID: 114669846066958576}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 224673627012529478}
   - component: {fileID: 222785434174732346}
   - component: {fileID: 114246932273682794}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224217215220849984}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: StatusBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 114922340415421010}
   - component: {fileID: 114574114692251770}
   - component: {fileID: 114335391094952622}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 108459633349114882}
   - component: {fileID: 82182258239664744}
   - component: {fileID: 120846617782507602}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GunBarrelEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4821986131171776}
   - component: {fileID: 137396056161451496}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
