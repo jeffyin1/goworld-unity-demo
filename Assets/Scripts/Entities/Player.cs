@@ -9,6 +9,12 @@ public class Player : GameEntity {
 
 	Animator anim;
 	PlayerShooting playerShooting;
+    EntityStatus m_status;
+
+    public void Init( EntityStatus status)
+    {
+        m_status = status;
+    }
 
     protected override void OnCreated() {
         GameObject.DontDestroyOnLoad(this.gameObject);
@@ -32,15 +38,26 @@ public class Player : GameEntity {
 
 		string action = this.Attrs.GetStr("action");
         anim.SetTrigger (action);
-	}
+
+        long hp = this.Attrs.GetInt("hp");
+        m_status.SetHp(hp);
+        m_status.InitWithAttr(this.Attrs);
+    }
 
 	public void OnAttrChange_action() {
         string action = this.Attrs.GetStr("action");
 		Debug.Log (this.ToString() + "'s action is changed to " + action); 
 		anim.SetTrigger (action);
 	}
+    public void OnAttrChange_hp()
+    {
+        long hp = this.Attrs.GetInt("hp");
+        Debug.Log(this.ToString() + "'hp is changed to " + hp.ToString());
+        m_status.SetHp(hp);
+    }
 
-	public void Shoot() {
+
+    public void Shoot() {
 		playerShooting.Shoot ();
 	}
 
@@ -67,10 +84,21 @@ public class Player : GameEntity {
                 camera.GetComponent<CameraFollow>().target = gameObject.transform;
             }
         }
+
+        if(m_status != null)
+        {
+            Vector3 namePos = Camera.main.WorldToScreenPoint(this.transform.position);
+            m_status.transform.position = namePos;
+        }
     }
 
     public static new GameObject CreateGameObject(MapAttr attrs)
     {
-        return GameObject.Instantiate(GameObject.Find("GoWorldController").GetComponent<GoWorldController>().Player);
+        var worldController = GameObject.Find("GoWorldController");
+        var world = worldController.GetComponent<GoWorldController>();
+        var p = GameObject.Instantiate(world.Player);
+        var entityStatus = world.GetEntityStatus();
+        p.GetComponent<Player>().Init(entityStatus);
+        return p;
     }
 }

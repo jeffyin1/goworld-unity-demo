@@ -11,6 +11,11 @@ public class GoWorldController : MonoBehaviour {
     public GameObject ZomBunny;
     public GameObject Hellephant;
     public GameObject Account;
+    public Canvas StatusCanvas;
+    public EntityStatus EntityStatus;
+
+    public static string sIp;
+    public static int sPort;
 
     void Start () {
         GameObject.DontDestroyOnLoad(gameObject);
@@ -22,12 +27,20 @@ public class GoWorldController : MonoBehaviour {
         GoWorld.RegisterEntity(typeof(Monster));
         Debug.Log("Connecting Serer ...");
         // GoWorldUnity3D.GoWorld.Connect("ec2-13-229-128-242.ap-southeast-1.compute.amazonaws.com", 15011);
-        GoWorldUnity3D.GoWorld.Connect("122.112.252.25", 15001); // 国内服务区
+        //GoWorldUnity3D.GoWorld.Connect("127.0.0.1", 14001);
+        GoWorldUnity3D.GoWorld.Connect(sIp, sPort);
     }
 	
 	// Update is called once per frame
 	void Update () {
         GoWorldUnity3D.GoWorld.Tick();
 	}
+
+    public EntityStatus GetEntityStatus()
+    {
+        var status = GameObject.Instantiate(EntityStatus);
+        status.transform.SetParent(StatusCanvas.transform, true);
+        return status;
+    }
 
 }
