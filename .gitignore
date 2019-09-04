@@ -34,3 +34,4 @@ sysinfo.txt
 *.unitypackage
 demo_Data/
 demo.exe
+*.app
